@@ -52,26 +52,17 @@ const cardAppender = (selector) => {
   axios.get(`http://localhost:5001/api/articles`)
     .then(resp => {
       let articleData = resp.data.articles
+      console.log(articleData.technology)
       for (const key of Object.entries(articleData)) {
         for (let i = 0; i < key.length; i++) {
           let article = key[i][i];
-          console.log(article.headline)
+          document.querySelector(selector).appendChild(Card(article));
         }
       }
-    /**
-     * I need to loop inside articleData
-     * then loop inside of each individual array inside of it
-     * and an article is each index of an array in the nested loop
-     */
-      let nextCheck = resp.data.articles.jquery[0].headline
-      
-     
-    })
+     })
     .catch(err => {
       console.log("Error: ", err);
     })
-
-  // document.querySelector(selector).appendChild(Card(article));
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.

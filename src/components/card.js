@@ -52,6 +52,18 @@ const cardAppender = (selector) => {
   axios.get(`http://localhost:5001/api/articles`)
     .then(resp => {
       let articleData = resp.data.articles
+      for (const key of Object.entries(articleData)) {
+        for (let i = 0; i < key.length; i++) {
+          let article = key[i][i];
+          console.log(article.headline)
+        }
+      }
+    /**
+     * I need to loop inside articleData
+     * then loop inside of each individual array inside of it
+     * and an article is each index of an array in the nested loop
+     */
+      let nextCheck = resp.data.articles.jquery[0].headline
       
      
     })

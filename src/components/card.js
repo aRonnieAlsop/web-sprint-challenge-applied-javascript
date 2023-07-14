@@ -51,11 +51,11 @@ const Card = (article) => {
 const cardAppender = (selector) => {
   axios.get(`http://localhost:5001/api/articles`)
     .then(resp => {
+
       let articleData = resp.data.articles
-      console.log(articleData.technology)
       for (const key of Object.entries(articleData)) {
-        for (let i = 0; i < key.length; i++) {
-          let article = key[i][i];
+        for (let i = 0; i < articleData.length; i++) {
+         let article = key[i][i];
           document.querySelector(selector).appendChild(Card(article));
         }
       }
@@ -63,6 +63,19 @@ const cardAppender = (selector) => {
     .catch(err => {
       console.log("Error: ", err);
     })
+
+    /**
+     *   TASK 6 - cardAppender,  Review making HTTP requests and getting data from a server using axios as well as how to use promises and iterate over 
+     * a list of data received from a server, creating a set of components and adding them to the DOM.
+    × [10] fetches articles and appends all article cards to the DOM (1027 ms)
+
+  ● TASK 6 - cardAppender,  Review making HTTP requests and getting data from a server using axios as well as how to use promises and iterate over a list of data 
+  received from a server, creating a set of components and adding them to the DOM. › [10] fetches articles and appends all article cards to the DOM
+
+    Unable to find an element with the text: ES8: The Next Step in the Evolution of Javascript and What it Means For Your Projects. This could be because the text 
+    is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+     */
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.

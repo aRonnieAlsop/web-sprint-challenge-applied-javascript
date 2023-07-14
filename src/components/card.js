@@ -53,12 +53,19 @@ const cardAppender = (selector) => {
     .then(resp => {
 
       let articleData = resp.data.articles
-      for (const key of Object.entries(articleData)) {
-        for (let i = 0; i < articleData.length; i++) {
-         let article = key[i][i];
+      for (let i in articleData) {
+        let key = articleData[i];
+        for (let k in key) {
+          let article = key[k];
           document.querySelector(selector).appendChild(Card(article));
         }
       }
+      // for (const key of Object.entries(articleData)) {
+      //   for (let i = 0; i < articleData.length; i++) {
+      //    let article = key[i][i];
+          // document.querySelector(selector).appendChild(Card(article));
+        // }
+      // }
      })
     .catch(err => {
       console.log("Error: ", err);
